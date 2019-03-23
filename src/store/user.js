@@ -43,6 +43,13 @@ export default {
             commit('setError', error.message)
             throw error
         }
+    },
+
+    autoLoginUser({commit}, payload) {
+        commit('setUser', new User(payload.uid))
+    },
+    logoutUser({commit}) {
+        commit('setUser', null)
     }
 },
     getters: {

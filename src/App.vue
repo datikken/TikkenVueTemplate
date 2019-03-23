@@ -4,12 +4,19 @@
       <div id="nav" v-for="link in links" :key="link.id">
         <router-link :to="link.url">{{link.title}}</router-link>
       </div>
+      <a class="logout" @click="onLogout" v-if="isUserLoggedIn">Logout</a>
     </div>
     <router-view/>
   </div>
 </template>
 <script>
 export default {
+methods: {
+  onLogout() {
+    this.$store.dispatch('logoutUser')
+    this.$router.push('/')        
+  }
+},
 computed: {
 isUserLoggedIn() {
   return this.$store.getters.isUserLoggedIn
@@ -26,7 +33,7 @@ links() {
       {title: 'Sign In', url: '/sign_in'},
       {title: 'Sign Up', url: '/sign_up'}
     ]
-  }
+   }
   }
  }
 }
@@ -60,5 +67,14 @@ links() {
 
 .navbar {
   display: flex;
+  align-items: center;
+}
+
+.logout {
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+    margin-left: 2rem;
+    cursor: pointer;
 }
 </style>

@@ -10,7 +10,7 @@
   </p>
     <input type="text" v-model="email" placeholder="email" autocomplete="on"><br/>
     <input type="password" v-model="password" placeholder="password" autocomplete="on"><br/>
-    <input type="submit" @click="signUp" value="send" class="button">
+    <input type="submit" @click="signUp" value="Sign Up" class="button">
   </form>
 </div>
 </template>
