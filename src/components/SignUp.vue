@@ -17,6 +17,7 @@ data() {
     password: ''
   }
  },
+//Show loading process
 computed: {
   loading() {
     return this.$store.getters.loading
