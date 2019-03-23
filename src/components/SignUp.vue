@@ -3,7 +3,7 @@
   <h1>Sign Up</h1>
   <form class="sign-up">
     <input type="text" v-model="email" placeholder="email"><br/>
-    <input type="text" v-model="password" placeholder="password"><br/>
+    <input type="password" v-model="password" placeholder="password"><br/>
     <input type="submit" @click="signUp" value="send" class="button">
   </form>
 </div>
@@ -42,7 +42,6 @@ methods: {
     border: 1px solid #2c3e50;
     margin-bottom: 1rem;
     border-radius: 0;
-    text-transform: uppercase;
   }
 }
 .button {
@@ -51,5 +50,6 @@ methods: {
     box-sizing: border-box;
     border: 1px solid #2c3e50;
     max-width: 5rem;
+    text-transform: uppercase;
 }
 </style>
