@@ -2,8 +2,8 @@
 <div>
   <h1>Sign Up</h1>
   <form class="sign-up">
-    <input type="text" v-model="email" placeholder="email"><br/>
-    <input type="password" v-model="password" placeholder="password"><br/>
+    <input type="text" v-model="email" placeholder="email" autocomplete="on"><br/>
+    <input type="password" v-model="password" placeholder="password" autocomplete="on"><br/>
     <input type="submit" @click="signUp" value="send" class="button">
   </form>
 </div>
@@ -17,6 +17,11 @@ data() {
     password: ''
   }
  },
+computed: {
+  loading() {
+    return this.$store.getters.loading
+  }
+},
 methods: {
   signUp() {
     const user = {
@@ -24,6 +29,10 @@ methods: {
       password: this.password
     }
     this.$store.dispatch('registerUser', user)
+    .then(() => {
+      this.$router.push('/')
+    })
+    .catch(err => console.log(err))
   }
  }
 }
