@@ -42,7 +42,12 @@ methods: {
         })
         .catch(err => this.errors.push(err.message))
     }
+  },
+created() {
+  if(this.$route.query['loginError']) {
+    this.$store.dispatch('setError', 'Sign in please')
   }
+ }
 }
 </script>
 <style lang="scss">
