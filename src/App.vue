@@ -7,6 +7,9 @@
       <a class="logout" @click="onLogout" v-if="isUserLoggedIn">Logout</a>
     </div>
     <router-view/>
+     <div class="snackbar" @click="closeError">
+      <p>{{error}}</p>
+    </div>
   </div>
 </template>
 <script>
@@ -15,9 +18,15 @@ methods: {
   onLogout() {
     this.$store.dispatch('logoutUser')
     this.$router.push('/')        
+  },
+  closeError() {
+    this.$store.dispatch('clearError')
   }
 },
 computed: {
+error() {
+  return this.$store.getters.error
+},
 isUserLoggedIn() {
   return this.$store.getters.isUserLoggedIn
   },
@@ -77,5 +86,16 @@ links() {
     text-decoration: none;
     margin-left: 2rem;
     cursor: pointer;
+}
+
+.snackbar {
+  height: 2rem;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0115f;
+  cursor: pointer;
 }
 </style>

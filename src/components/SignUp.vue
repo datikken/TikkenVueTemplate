@@ -2,12 +2,6 @@
 <div>
   <h1>Sign Up</h1>
   <form class="sign-up">
-  <p v-if="errors.length">
-    <b>Oops:</b>
-    <ul class="errors">
-      <li v-for="error in errors" :key="error.message">{{ error }}</li>
-    </ul>
-  </p>
     <input type="text" v-model="email" placeholder="email" autocomplete="on"><br/>
     <input type="password" v-model="password" placeholder="password" autocomplete="on"><br/>
     <input type="submit" @click="signUp" value="Sign Up" class="button">
@@ -19,7 +13,6 @@
 export default {
 data() {
   return {
-    errors: [],
     email: '',
     password: ''
   }
@@ -40,7 +33,7 @@ methods: {
     .then(() => {
       this.$router.push('/')
     })
-    .catch(err => this.errors.push(err.message))
+    .catch(err => {})
   }
  }
 }
@@ -48,7 +41,7 @@ methods: {
 <style lang="scss">
 .sign-up {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
  & input {
@@ -68,6 +61,14 @@ methods: {
     border: 1px solid #2c3e50;
     max-width: 5rem;
     text-transform: uppercase;
+}
+.errors {
+    list-style: none;
+    color: #e0115f;
+
+    & li {
+        margin-right: 2rem;
+    }
 }
 .errors {
     list-style: none;

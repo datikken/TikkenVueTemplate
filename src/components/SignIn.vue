@@ -2,12 +2,6 @@
 <div>
   <h1>Sign In</h1>
   <form class="sign-up">
-  <p v-if="errors.length">
-    <b>Oops:</b>
-    <ul class="errors">
-      <li v-for="error in errors" :key="error">{{ error }}</li>
-    </ul>
-  </p>
     <input type="text" v-model="email" placeholder="email" autocomplete="on"><br/>
     <input type="password" v-model="password" placeholder="password" autocomplete="on"><br/>
     <input type="submit" @click="signIn" value="Sign In" class="button">
@@ -50,13 +44,3 @@ created() {
  }
 }
 </script>
-<style lang="scss">
-.errors {
-    list-style: none;
-    color: #e0115f;
-
-    & li {
-        margin-right: 2rem;
-    }
-}
-</style>
