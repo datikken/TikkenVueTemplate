@@ -3,9 +3,9 @@
   <h1>Sign Up</h1>
   <form class="sign-up">
   <p v-if="errors.length">
-    <b>Please correct the following:</b>
+    <b>Oops:</b>
     <ul class="errors">
-      <li v-for="error in errors" :key="error">{{ error }}</li>
+      <li v-for="error in errors" :key="error.message">{{ error }}</li>
     </ul>
   </p>
     <input type="text" v-model="email" placeholder="email" autocomplete="on"><br/>

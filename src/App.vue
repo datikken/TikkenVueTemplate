@@ -1,14 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/sign_up">Sign up</router-link> |
-      <router-link to="/sign_in">Sign in</router-link>
+    <div class="navbar">
+      <div id="nav" v-for="link in links" :key="link.id">
+        <router-link :to="link.url">{{link.title}}</router-link>
+      </div>
     </div>
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+computed: {
+isUserLoggedIn() {
+  return this.$store.getters.isUserLoggedIn
+  },
+links() {
+  if(this.isUserLoggedIn) {
+    return [
+      {title: 'Home', url: '/'},
+      {title: 'About', url: '/about'}
+    ]
+  } else {
+    return [
+      {title: 'Home', url: '/'},
+      {title: 'Sign In', url: '/sign_in'},
+      {title: 'Sign Up', url: '/sign_up'}
+    ]
+  }
+  }
+ }
+}
+</script>
 
 <style lang="scss">
 @font-face {
@@ -25,7 +47,7 @@
 }
 
 #nav {
-  padding: 30px;
+  margin: 1rem 2rem;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -34,5 +56,9 @@
       color: #42b983;
     }
   }
+}
+
+.navbar {
+  display: flex;
 }
 </style>

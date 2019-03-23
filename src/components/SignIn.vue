@@ -3,7 +3,7 @@
   <h1>Sign In</h1>
   <form class="sign-up">
   <p v-if="errors.length">
-    <b>Please correct the following:</b>
+    <b>Oops:</b>
     <ul class="errors">
       <li v-for="error in errors" :key="error">{{ error }}</li>
     </ul>
