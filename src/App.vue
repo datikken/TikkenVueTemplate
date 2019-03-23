@@ -54,7 +54,8 @@ links() {
 }
 
 #nav {
-  margin: 1rem 2rem;
+  margin: 1rem 1rem;
+  min-width: 4.5rem;
   a {
     font-weight: bold;
     color: #2c3e50;
